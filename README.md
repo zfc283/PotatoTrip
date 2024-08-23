@@ -18,7 +18,7 @@ To get started, follow the following steps:
    docker pull mcr.microsoft.com/mssql/server
    ```
 
-4. Start the Docker container by running the following command:
+4. Start the Docker container by running the following command
 
    Windows:
 
@@ -35,26 +35,26 @@ To get started, follow the following steps:
    Replace `YOUR_PASSWORD` with the password you would use to connect to SQL Server
 
 5. Clone the repository to the local environment using: `git clone <repository-url>`
-6. Open the Command Prompt and run the following command within the project's root directory to restore project dependencies:
+6. Open the Command Prompt and run the following command within the project's root directory to restore project dependencies
 
     ```bash
     dotnet restore
     ```
 
-    Afterwards, run the following command to build the project:
+    Afterwards, run the following command to build the project
 
     ```bash
     dotnet build
     ```
    
 7. Open the project in Visual Studio and navigate to the `appsettings.json` file. In the `ConnectionString` section, replace the `Password` field with your SQL server password. If you follow the steps above, you should also set the `User Id` field to `sa` and choose a database name to enter in the `Database` field
-8. Open the Command Prompt and run the following command to create the initial database migration:
+8. Open the Command Prompt and run the following command to create the initial database migration
 
    ```bash
    dotnet ef migrations add initialMigration
    ```
 
-   Afterwards, execute the following command to create the database:
+   Afterwards, execute the following command to create the database
 
    ```bash
    dotnet ef database update

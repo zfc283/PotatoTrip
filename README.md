@@ -60,13 +60,13 @@ To get started, follow the following steps:
    dotnet ef database update
    ```
 
-9. After completing the steps above, open Visual Studio to run the project. Alternatively, you could also use
+9. After completing the steps above, open Visual Studio to run the project. Alternatively, you could use the
     
    ```bash
    dotnet run
    ```
    
-   in the project's root directory to run the project
+   command in the project's root directory
    
     
  

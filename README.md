@@ -20,13 +20,13 @@ To get started, follow the following steps:
 
 4. Start the Docker container by running the following command
 
-   Windows:
+   Windows
 
    ```bash
    docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=YOUR_PASSWORD" -p 1433:1433 -d mcr.microsoft.com/mssql/server
    ```
 
-   Mac/Linux:
+   Mac/Linux
 
    ```bash
    docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=YOUR_PASSWORD' -p 1433:1433 -d mcr.microsoft.com/mssql/server

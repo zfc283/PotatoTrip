@@ -90,7 +90,7 @@ To get started, follow the following steps:
 - **Description**: This HATEOAS-driven endpoint provides an overview of available APIs in the application, offering a dynamic entry point for navigating the API landscape.
 - **Request Parameters**: None
 
-***
+#
 
 ### Travel Routes
 - **Path**: http:&#8203;//99.79.181.180:5000/api/travelRoutes

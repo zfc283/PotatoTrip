@@ -160,7 +160,13 @@ To get started, follow the following steps:
 }
 ```
 
+&nbsp;
 
+#
 
-
+### Authentication
+- **Path**: http:&#8203;//99.79.181.180:5000/api/auth/register
+- **Method**: POST
+- **Description**: 
+- **Request Parameters**:
 

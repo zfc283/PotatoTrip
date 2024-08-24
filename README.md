@@ -110,10 +110,57 @@ To get started, follow the following steps:
 |            | orderBy            | String   | No           | Sorts the response by specified attributes in ascending or descending order. Specify sorting criteria by using the attribute followed by `asc` (ascending) or `desc` (descending), separated by commas. If the direction is omitted, results are sorted in ascending order by default. Supported attributes are: `id`, `title`, `originalPrice`, `departureTime`, `rating`, `travelDays`. Incorrect or unsupported attributes will trigger an error. Example: `orderBy=title desc, originalPrice`                                                |
 |            | fields             | String   | No           | Specifies a subset of fields to be returned for each travel route item. List the desired fields separated by commas. For example, using `fields=id, price` will return only the `id` and `price` fields in each travel route. **Note**: When HATEOAS is enabled, the `id` field **must** be included in the `fields` parameter to avoid issues. Supported fields include `id`, `title`, `description`, `price`, `originalPrice`, `discountPercent`, among others. |
 
+&nbsp;
 
-   
+- **Path**: http:&#8203;//99.79.181.180:5000/api/travelRoutes
+- **Method**: POST
+- **Description**: Creates a new travel route in the application. Authentication and admin rights are required.
+- **Request Parameters**:
+
+&nbsp;
+
+|            | **Parameter Name**  | **Type** | **Required** | **Description**                                                                                                                       |
+|------------|---------------------|----------|--------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| **Header** | Authentication      | String   | Yes          | `bearer [JWT token]`. See the 'Authentication' section for instructions on getting the JWT token.                                     |
+| **Body**   | Title               | String   | Yes          | The title field needs to be different from the description field                                                                      |
+|            | Description         | String   | Yes          | The description field needs to be different from the title field                                                                      |
+|            | OriginalPrice       | Decimal  | No           |                                                                                                                                       |
+|            | DiscountPercent     | Decimal  | No           | Decimal value in the range [0.0 to 1.0]                                                                                               |
+|            | DepartureTime       | String   | No           | Date format in `yyyy-MM-dd`. Example: `2024-05-01`                                                                                    |
+|            | Features            | String   | No           |                                                                                                                                       |
+|            | Fees                | String   | No           |                                                                                                                                       |
+|            | Notes               | String   | No           |                                                                                                                                       |
+|            | TravelRoutePictures | Array    | No           | An array of objects. Each object contains only the field `url`.                                                                       |
+|            | Rating              | Decimal  | No           |                                                                                                                                       |
+|            | TravelDays          | String   | No           | Specifies the number of travel days. Accepted values are: `One`, `Two`, `Three`, `Four`, `Five`, `Six`, `Seven`, `Eight`, `EightPlus` |
+|            | TripType            | String   | No           | Specifies the type of trip. Accepted values are: `HotelAndAttractions`, `Group`, `PrivateGroup`, `BackPackTour`, `SemiBackPackTour`.  |
+|            | DepartureCity       | String   | No           | Specifies the trip departure city. Accepted values are: `Beijing`, `Shanghai`, `Guangzhou`, `Shenzhen`.                               |
     
- 
+&nbsp;
+
+**Example request body**:
+
+```JSON
+{
+    "title": "hellotest333",
+    "description": "hello test hello test hello test",
+    "originalPrice": 6988.9,
+    "departureTime": "2024-09-01",
+    "travelRoutePictures": [
+        {
+            "url": "../../assets/images/osaka-castle-1398116_640.jpg"
+        },
+        {
+            "url": "../../assets/images/222222.jpg"
+        }
+    ],
+    "tripType": "group",
+    "travelDays": "three",
+    "departureCity": "beijing"
+}
+```
+
+
 
 
 

@@ -1,3 +1,16 @@
+## Description
+
+PotatoTrip is an ASP.NET Core backend solution designed to streamline travel deals shopping experiences. This robust project offers a suite of APIs supporting CRUD operations on travel deals, user registration and authentication, along with mechanisms for handling shopping cart and order management. Ideal for trip-vendor-related applications looking for robust backend support.
+
+&nbsp;
+
+- Project Demo: http://99.79.181.180:5000
+- Test account:
+  - email: admin@&#8203;potatotrip.site
+  - password: Abc123$
+
+&nbsp;
+
 ## Dependencies
 * .NET 5
 * ASP.NET Core 5

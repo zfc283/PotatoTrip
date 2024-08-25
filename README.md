@@ -114,7 +114,7 @@ To get started, follow the following steps:
 
 - **Path**: http:&#8203;//99.79.181.180:5000/api/travelRoutes
 - **Method**: POST
-- **Description**: Creates a new travel route in the application. Authentication and admin rights are required (to access admin rights, log in with the admin account). Upon successful creation, the API returns a 201 Created status code.
+- **Description**: Creates a new travel route in the application. Authentication and admin rights are required (to access admin rights, log in with the admin account). Upon successful creation, the API returns the created travel route in the response body.
 - **Request Parameters**:
 
 &nbsp;
@@ -303,7 +303,7 @@ To get started, follow the following steps:
 
 - **Path**: http:&#8203;//99.79.181.180:5000/api/travelRoutes/{travelRouteID}/pictures
 - **Method**: POST
-- **Description**: Adds a picture to the travel route with ID `travelRouteID`. Authentication and admin rights are required (to access admin rights, log in with the admin account).
+- **Description**: Adds a picture to the travel route with ID `travelRouteID`. Authentication and admin rights are required (to access admin rights, log in with the admin account). Upon successful creation, the API returns the created travel route picture in the response body.
 - **Request Parameters**: 
 
 &nbsp;

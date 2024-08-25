@@ -4,7 +4,7 @@ PotatoTrip is an ASP.NET Core backend solution designed to streamline travel dea
 
 &nbsp;
 
-- Project Demo: http://99.79.181.180:5000 &nbsp; (Details on API usage are outlined below)
+- Project Demo: https://potatotrip.site/api &nbsp; (Details on API usage are outlined below)
 - Admin account:
   - email: admin@&#8203;potatotrip.site
   - password: Abc123$
@@ -85,7 +85,7 @@ To get started, follow the following steps:
 
 ## API Usage
 ### Root Endpoint
-- **Path**: http:&#8203;//99.79.181.180:5000/api
+- **Path**: https:&#8203;//potatotrip.site/api
 - **Method**: GET
 - **Description**: This HATEOAS-driven endpoint provides an overview of available APIs in the application, offering a dynamic entry point for navigating the API landscape.
 - **Request Parameters**: None
@@ -93,7 +93,7 @@ To get started, follow the following steps:
 #
 
 ### Travel Routes
-- **Path**: http:&#8203;//99.79.181.180:5000/api/travelRoutes
+- **Path**: https:&#8203;//potatotrip.site/api/travelRoutes
 - **Method**: GET
 - **Description**: Retrieves all travel deals available in the application. The results can be filtered based on request parameters. By default, the response is in `application/json`. To enable HATEOAS, set the `Accept` header to `application/vnd.mycompany.hateoas+json`.
 - **Request Parameters**:
@@ -112,7 +112,7 @@ To get started, follow the following steps:
 
 &nbsp;
 
-- **Path**: http:&#8203;//99.79.181.180:5000/api/travelRoutes
+- **Path**: https:&#8203;//potatotrip.site/api/travelRoutes
 - **Method**: POST
 - **Description**: Creates a new travel route in the application. Authentication and admin rights are required (to access admin rights, log in with the admin account). Upon successful creation, the API returns the created travel route in the response body.
 - **Request Parameters**:
@@ -165,7 +165,7 @@ To get started, follow the following steps:
 #
 
 ### Authentication
-- **Path**: http:&#8203;//99.79.181.180:5000/api/auth/register
+- **Path**: https:&#8203;//potatotrip.site/api/auth/register
 - **Method**: POST
 - **Description**: User registration. Upon successful registration, the API returns a 200 OK status code.
 - **Request Parameters**:
@@ -180,7 +180,7 @@ To get started, follow the following steps:
 
 &nbsp;
 
-- **Path**: http:&#8203;//99.79.181.180:5000/api/auth/login
+- **Path**: https:&#8203;//potatotrip.site/api/auth/login
 - **Method**: POST
 - **Description**: User Login. This API authenticates the user and, upon successful login, returns a JWT (JSON Web Token) in the response body. This token is used to verify the user's identity in subsequent requests.
 - **Request Parameters**:
@@ -197,7 +197,7 @@ To get started, follow the following steps:
 #
 
 ### Travel Route
-- **Path**: http:&#8203;//99.79.181.180:5000/api/travelRoutes/{travelRouteID}
+- **Path**: https:&#8203;//potatotrip.site/api/travelRoutes/{travelRouteID}
 - **Method**: GET
 - **Description**: Gets a single travel route with ID `travelRouteID`
 - **Request Parameters**:
@@ -211,7 +211,7 @@ To get started, follow the following steps:
 
 &nbsp;
 
-- **Path**: http:&#8203;//99.79.181.180:5000/api/travelRoutes/{travelRouteID}
+- **Path**: https:&#8203;//potatotrip.site/api/travelRoutes/{travelRouteID}
 - **Method**: PUT
 - **Description**: Updates a single travel route with ID `travelRouteID`. Note that this method performs a **complete update**: any fields not specified in the request will be reset to their default values (for example: null), potentially overwriting any existing values. Authentication and admin rights are required (to access admin rights, log in with the admin account). Upon successful update, the API returns a 204 No Content status code.
 - **Request Parameters**:
@@ -238,7 +238,7 @@ To get started, follow the following steps:
 
 &nbsp;
 
-- **Path**: http:&#8203;//99.79.181.180:5000/api/travelRoutes/{travelRouteID}
+- **Path**: https:&#8203;//potatotrip.site/api/travelRoutes/{travelRouteID}
 - **Method**: PATCH
 - **Description**: Partially updates a single travel route with ID `travelRouteID`. This method performs a partial update: any fields not specified in the request will not be reset to their default values, only those fields specified in the request will be updated. Authentication and admin rights are required (to access admin rights, log in with the admin account). Upon successful update, the API returns a 204 No Content status code.
 - **Request Parameters**:
@@ -265,7 +265,7 @@ To get started, follow the following steps:
 
 &nbsp;
 
-- **Path**: http:&#8203;//99.79.181.180:5000/api/travelRoutes/{travelRouteID}
+- **Path**: https:&#8203;//potatotrip.site/api/travelRoutes/{travelRouteID}
 - **Method**: DELETE
 - **Description**: Deletes a single travel route with ID `travelRouteID`. Authentication and admin rights are required (to access admin rights, log in with the admin account). Upon successful deletion, the API returns a 204 No Content status code.
 - **Request Parameters**:
@@ -278,7 +278,7 @@ To get started, follow the following steps:
 
 &nbsp;
 
-- **Path**: http:&#8203;//99.79.181.180:5000/api/travelRoutes/(travelRouteID1, travelRouteID2, ...)
+- **Path**: https:&#8203;//potatotrip.site/api/travelRoutes/(travelRouteID1, travelRouteID2, ...)
 - **Method**: DELETE
 - **Description**: Batch deletes travel routes based on the travel route IDs enclosed within the parentheses in the path. Example call of API: `http://99.79.181.180:5000/api/travelRoutes/(1, 2, 3, 4)` (Travel routes with ID 1, 2, 3, 4 will be deleted). Authentication and admin rights are required (to access admin rights, log in with the admin account). Upon successful deletion, the API returns a 204 No Content status code.
 - **Request Parameters**:
@@ -294,14 +294,14 @@ To get started, follow the following steps:
 #
 
 ### Travel Route Picture
-- **Path**: http:&#8203;//99.79.181.180:5000/api/travelRoutes/{travelRouteID}/pictures
+- **Path**: https:&#8203;//potatotrip.site/api/travelRoutes/{travelRouteID}/pictures
 - **Method**: GET
 - **Description**: Gets all the pictures of the travel route with ID `travelRouteID`
 - **Request Parameters**: None
 
 &nbsp;
 
-- **Path**: http:&#8203;//99.79.181.180:5000/api/travelRoutes/{travelRouteID}/pictures
+- **Path**: https:&#8203;//potatotrip.site/api/travelRoutes/{travelRouteID}/pictures
 - **Method**: POST
 - **Description**: Adds a picture to the travel route with ID `travelRouteID`. Authentication and admin rights are required (to access admin rights, log in with the admin account). Upon successful creation, the API returns the created travel route picture in the response body.
 - **Request Parameters**: 
@@ -315,14 +315,14 @@ To get started, follow the following steps:
 
 &nbsp;
 
-- **Path**: http:&#8203;//99.79.181.180:5000/api/travelRoutes/{travelRouteID}/pictures/{pictureID}
+- **Path**: https:&#8203;//potatotrip.site/api/travelRoutes/{travelRouteID}/pictures/{pictureID}
 - **Method**: GET
 - **Description**: Gets the picture with ID `pictureID` under the travel route with ID `travelRouteID`
 - **Request Parameters**: None
 
 &nbsp;
 
-- **Path**: http:&#8203;//99.79.181.180:5000/api/travelRoutes/{travelRouteID}/pictures/{pictureID}
+- **Path**: https:&#8203;//potatotrip.site/api/travelRoutes/{travelRouteID}/pictures/{pictureID}
 - **Method**: DELETE
 - **Description**: Deletes the picture with ID `pictureID` under the travel route with ID `travelRouteID`. Authentication and admin rights are required (to access admin rights, log in with the admin account). Upon successful deletion, the API returns a 204 No Content status code.
 - **Request Parameters**:
@@ -338,7 +338,7 @@ To get started, follow the following steps:
 #
 
 ### Shopping Cart
-- **Path**: http:&#8203;//99.79.181.180:5000/api/shoppingCart
+- **Path**: https:&#8203;//potatotrip.site/api/shoppingCart
 - **Method**: GET
 - **Description**: Gets the shopping cart for the current logged in user.
 - **Request Parameters**:
@@ -351,7 +351,7 @@ To get started, follow the following steps:
 
 &nbsp;
 
-- **Path**: http:&#8203;//99.79.181.180:5000/api/shoppingCart/items
+- **Path**: https:&#8203;//potatotrip.site/api/shoppingCart/items
 - **Method**: POST
 - **Description**: Add a travel deal to the current logged in user's shopping cart
 - **Request Parameters**:
@@ -365,7 +365,7 @@ To get started, follow the following steps:
 
 &nbsp;
 
-- **Path**: http:&#8203;//99.79.181.180:5000/api/shoppingCart/items/{itemID}
+- **Path**: https:&#8203;//potatotrip.site/api/shoppingCart/items/{itemID}
 - **Method**: DELETE
 - **Description**: Deletes the item with ID `itemID` from the current logged in user's shopping cart. Upon successful deletion, the API returns a 204 No Content status code.
 - **Request Parameters**:
@@ -378,7 +378,7 @@ To get started, follow the following steps:
 
 &nbsp;
 
-- **Path**: http:&#8203;//99.79.181.180:5000/api/shoppingCart/items/(itemID1, itemID2, ...)
+- **Path**: https:&#8203;//potatotrip.site/api/shoppingCart/items/(itemID1, itemID2, ...)
 - **Method**: DELETE
 - **Description**: Batch deletes shopping cart items based on the item IDs enclosed within the parentheses in the path. Example call of API: `http://99.79.181.180:5000/api/shoppingCart/items/(1, 2, 3, 4)` (Items with ID 1, 2, 3, 4 will be deleted). Log in is required. Upon successful deletion, the API returns a 204 No Content status code.
 - **Request Parameters**:
@@ -391,7 +391,7 @@ To get started, follow the following steps:
 
 &nbsp;
 
-- **Path**: http:&#8203;//99.79.181.180:5000/api/shoppingCart/checkout
+- **Path**: https:&#8203;//potatotrip.site/api/shoppingCart/checkout
 - **Method**: POST
 - **Description**: Check out the current logged in user's shopping cart and create an order. Upon successful checkout, the API returns details of the created order in the response body.
 - **Request Parameters**:
@@ -450,7 +450,7 @@ To get started, follow the following steps:
 #
 
 ### Order
-- **Path**: http:&#8203;//99.79.181.180:5000/api/orders
+- **Path**: https:&#8203;//potatotrip.site/api/orders
 - **Method**: GET
 - **Description**: Get all orders of the current logged in user
 - **Request Parameters**:
@@ -465,7 +465,7 @@ To get started, follow the following steps:
 
 &nbsp;
 
-- **Path**: http:&#8203;//99.79.181.180:5000/api/orders/{orderID}
+- **Path**: https:&#8203;//potatotrip.site/api/orders/{orderID}
 - **Method**: GET
 - **Description**: Get the order with ID `orderID` of the current logged in user
 - **Request Parameters**:
@@ -478,7 +478,7 @@ To get started, follow the following steps:
 
 &nbsp;
 
-- **Path**: http:&#8203;//99.79.181.180:5000/api/orders/{orderID}/placeOrder (Not yet implemented)
+- **Path**: https:&#8203;//potatotrip.site/api/orders/{orderID}/placeOrder (Not yet implemented)
 - **Method**: POST
 - **Description**: Place the order with ID `orderID` for the current logged in user
 - **Request Parameters**:

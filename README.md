@@ -189,8 +189,8 @@ To get started, follow the following steps:
 
 |          | **Parameter Name** | **Type** | **Required** | **Description**                              |
 |----------|--------------------|----------|--------------|----------------------------------------------|
-| **Body** | Email              | String   | Yes          | Provided email at the time of registration   |
-|          | Password           | String   | Yes          | Entered password at the time of registration |
+| **Body** | Email              | String   | Yes          | Email provided at registration   |
+|          | Password           | String   | Yes          | Password entered at registration |
 
 &nbsp;
 

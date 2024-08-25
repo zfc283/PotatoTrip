@@ -187,10 +187,10 @@ To get started, follow the following steps:
 
 &nbsp;
 
-|          | **Parameter Name** | **Type** | **Required** | **Description** |
-|----------|--------------------|----------|--------------|-----------------|
-| **Body** | Email              | String   | Yes          |                 |
-|          | Password           | String   | Yes          |                 |
+|          | **Parameter Name** | **Type** | **Required** | **Description**                              |
+|----------|--------------------|----------|--------------|----------------------------------------------|
+| **Body** | Email              | String   | Yes          | Provided email at the time of registration   |
+|          | Password           | String   | Yes          | Entered password at the time of registration |
 
 &nbsp;
 

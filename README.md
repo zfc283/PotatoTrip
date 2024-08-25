@@ -1,6 +1,6 @@
 ## Description
 
-PotatoTrip is an ASP.NET Core backend solution designed to streamline vacation packages shopping experiences. This robust project offers a suite of RESTful APIs supporting CRUD operations on travel deals, user registration and authentication, along with mechanisms for handling shopping cart and order management. Ideal for trip-vendor-related applications looking for robust backend support.
+PotatoTrip is an ASP.NET Core backend solution designed to streamline the shopping experience for vacation packages. This robust project offers a suite of RESTful APIs supporting CRUD operations on travel deals, user registration and authentication, along with mechanisms for handling shopping cart and order management. Ideal for trip-vendor-related applications looking for robust backend support.
 
 &nbsp;
 

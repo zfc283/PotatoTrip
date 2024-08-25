@@ -5,7 +5,7 @@ PotatoTrip is an ASP.NET Core backend solution designed to streamline travel dea
 &nbsp;
 
 - Project Demo: http://99.79.181.180:5000 &nbsp; (Details on API usage are outlined below)
-- Test account:
+- Admin account:
   - email: admin@&#8203;potatotrip.site
   - password: Abc123$
 
@@ -102,26 +102,26 @@ To get started, follow the following steps:
 
 |            | **Parameter Name** | **Type** | **Required** | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 |------------|--------------------|----------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Header** | Accept             | String   | No           | Set to `application/vnd.mycompany.hateoas+json` to enable HATEOAS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| **Query**  | keyword            | String   | No           | Filter travel routes based on if title of a travel route contains the keyword                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-|            | pageNumber         | String   | No           | Specifies the page number in a paginated response. Must be a positive integer. Default value is 1.                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-|            | pageSize           | String   | No           | Specifies the number of items to be returned per page in a paginated response. Must be a positive integer. Default value is 10, maximum value is 50.                                                                                                                                                                                                                                                                                                                                                                                             |
-|            | rating             | String   | No           | Filter travel routes based on rating. Use the format: `$operatorType $value`. `$operatorType` is one of `lessThan`, `equalTo`, `largerThan`. `$value` is an integer representing the rating. Example: `rating=largerThan 3`                                                                                                                                                                                                                                                                                                                      |
-|            | orderBy            | String   | No           | Sorts the response by specified attributes in ascending or descending order. Specify sorting criteria by using the attribute followed by `asc` (ascending) or `desc` (descending), separated by commas. If the direction is omitted, results are sorted in ascending order by default. Supported attributes are: `id`, `title`, `originalPrice`, `departureTime`, `rating`, `travelDays`. Incorrect or unsupported attributes will trigger an error. Example: `orderBy=title desc, originalPrice`                                                |
-|            | fields             | String   | No           | Specifies a subset of fields to be returned for each travel route item. List the desired fields separated by commas. For example, using `fields=id, price` will return only the `id` and `price` fields in each travel route. **Note**: When HATEOAS is enabled, the `id` field **must** be included in the `fields` parameter to avoid issues. Supported fields include `id`, `title`, `description`, `price`, `originalPrice`, `discountPercent`, among others. |
+| **Header** | Accept             | String   | No           | Default is `application/json`. Set to `application/vnd.mycompany.hateoas+json` to enable HATEOAS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **Query**  | Keyword            | String   | No           | Filter travel routes based on if title of a travel route contains the keyword                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+|            | PageNumber         | String   | No           | Specifies the page number in a paginated response. Must be a positive integer. Default value is 1.                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|            | PageSize           | String   | No           | Specifies the number of items to be returned per page in a paginated response. Must be a positive integer. Default value is 10, maximum value is 50.                                                                                                                                                                                                                                                                                                                                                                                             |
+|            | Rating             | String   | No           | Filter travel routes based on rating. Use the format: `$operatorType $value`. `$operatorType` is one of `lessThan`, `equalTo`, `largerThan`. `$value` is an integer representing the rating. Example: `rating=largerThan 3`                                                                                                                                                                                                                                                                                                                      |
+|            | OrderBy            | String   | No           | Sorts the response by specified attributes in ascending or descending order. Specify sorting criteria by using the attribute followed by `asc` (ascending) or `desc` (descending), separated by commas. If the direction is omitted, results are sorted in ascending order by default. Supported attributes are: `id`, `title`, `originalPrice`, `departureTime`, `rating`, `travelDays`. Incorrect or unsupported attributes will trigger an error. Example: `orderBy=title desc, originalPrice`                                                |
+|            | Fields             | String   | No           | Specifies a subset of fields to be returned for each travel route item. List the desired fields separated by commas. For example, using `fields=id, price` will return only the `id` and `price` fields in each travel route. **Note**: When HATEOAS is enabled, the `id` field **must** be included in the `fields` parameter to avoid issues. Supported fields include `id`, `title`, `description`, `price`, `originalPrice`, `discountPercent`, among others. |
 
 &nbsp;
 
 - **Path**: http:&#8203;//99.79.181.180:5000/api/travelRoutes
 - **Method**: POST
-- **Description**: Creates a new travel route in the application. Authentication and admin rights are required.
+- **Description**: Creates a new travel route in the application. Authentication and admin rights are required (to access admin rights, log in with the admin account). Upon successful creation, the API returns a 201 Created status code.
 - **Request Parameters**:
 
 &nbsp;
 
 |            | **Parameter Name**  | **Type** | **Required** | **Description**                                                                                                                       |
 |------------|---------------------|----------|--------------|---------------------------------------------------------------------------------------------------------------------------------------|
-| **Header** | Authentication      | String   | Yes          | `bearer [JWT token]`. See the 'Authentication' section for instructions on getting the JWT token.                                     |
+| **Header** | Authorization      | String   | Yes          | `bearer [JWT token]`. See the 'Authentication' section for instructions on getting the JWT token.                                     |
 | **Body**   | Title               | String   | Yes          | The title field needs to be different from the description field                                                                      |
 |            | Description         | String   | Yes          | The description field needs to be different from the title field                                                                      |
 |            | OriginalPrice       | Decimal  | No           |                                                                                                                                       |
@@ -167,6 +167,327 @@ To get started, follow the following steps:
 ### Authentication
 - **Path**: http:&#8203;//99.79.181.180:5000/api/auth/register
 - **Method**: POST
-- **Description**: 
+- **Description**: User registration. Upon successful registration, the API returns a 200 OK status code.
 - **Request Parameters**:
+
+&nbsp;
+
+|          | **Parameter Name** | **Type** | **Required** | **Description**                                                                                                                   |
+|----------|--------------------|----------|--------------|-----------------------------------------------------------------------------------------------------------------------------------|
+| **Body** | Email              | String   | Yes          | This parameter is used as the login credential and must be a unique email address within the system                               |
+|          | Password           | String   | Yes          | The password needs to contain numbers, uppercase and lowercase characters, special characters and must be at least 6 digits long  |
+|          | ConfirmPassword    | String   | Yes          | The confirm password needs to be identical to the entered password                                                                |
+
+&nbsp;
+
+- **Path**: http:&#8203;//99.79.181.180:5000/api/auth/login
+- **Method**: POST
+- **Description**: User Login. This API authenticates the user and, upon successful login, returns a JWT (JSON Web Token) in the response body. This token is used to verify the user's identity in subsequent requests.
+- **Request Parameters**:
+
+&nbsp;
+
+|          | **Parameter Name** | **Type** | **Required** | **Description** |
+|----------|--------------------|----------|--------------|-----------------|
+| **Body** | Email              | String   | Yes          |                 |
+|          | Password           | String   | Yes          |                 |
+
+&nbsp;
+
+#
+
+### Travel Route
+- **Path**: http:&#8203;//99.79.181.180:5000/api/travelRoutes/{travelRouteID}
+- **Method**: GET
+- **Description**: Gets a single travel route with ID `travelRouteID`
+- **Request Parameters**:
+
+&nbsp;
+
+|            | **Parameter Name** | **Type** | **Required** | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                 |
+|------------|--------------------|----------|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Header** | Accept             | String   | No           | Default is `application/json`. Set to `application/vnd.mycompany.hateoas+json` to enable HATEOAS                                                                                                                                                                                                                                                                                                                                |
+| **Query**  | Fields             | String   | No           | Specifies a subset of fields to be returned. List the desired fields separated by commas. For example, using `fields=id, price` will return only the `id` and `price` fields in the result. **Note**: When HATEOAS is enabled, the `id` field **must** be included in the `fields` parameter to avoid issues. Supported fields include `id`, `title`, `description`, `price`, `originalPrice`, `discountPercent`, among others. |
+
+&nbsp;
+
+- **Path**: http:&#8203;//99.79.181.180:5000/api/travelRoutes/{travelRouteID}
+- **Method**: PUT
+- **Description**: Updates a single travel route with ID `travelRouteID`. Note that this method performs a **complete update**: any fields not specified in the request will be reset to their default values (for example: null), potentially overwriting any existing values. Authentication and admin rights are required (to access admin rights, log in with the admin account). Upon successful update, the API returns a 204 No Content status code.
+- **Request Parameters**:
+
+&nbsp;
+
+
+|            | **Parameter Name**  | **Type** | **Required** | **Description**                                                                                                                       |
+|------------|---------------------|----------|--------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| **Header** | Authorization      | String   | Yes          | `bearer [JWT token]`. See the 'Authentication' section for instructions on getting the JWT token.                                     |
+| **Body**   | Title               | String   | Yes          | The title field needs to be different from the description field                                                                      |
+|            | Description         | String   | Yes          | The description field needs to be different from the title field                                                                      |
+|            | OriginalPrice       | Decimal  | No           |                                                                                                                                       |
+|            | DiscountPercent     | Decimal  | No           | Decimal value in the range [0.0 to 1.0]                                                                                               |
+|            | DepartureTime       | String   | No           | Date format in `yyyy-MM-dd`. Example: `2024-05-01`                                                                                    |
+|            | Features            | String   | No           |                                                                                                                                       |
+|            | Fees                | String   | No           |                                                                                                                                       |
+|            | Notes               | String   | No           |                                                                                                                                       |
+|            | TravelRoutePictures | Array    | No           | An array of objects. Each object contains only the field `url`.                                                                       |
+|            | Rating              | Decimal  | No           |                                                                                                                                       |
+|            | TravelDays          | String   | No           | Specifies the number of travel days. Accepted values are: `One`, `Two`, `Three`, `Four`, `Five`, `Six`, `Seven`, `Eight`, `EightPlus` |
+|            | TripType            | String   | No           | Specifies the type of trip. Accepted values are: `HotelAndAttractions`, `Group`, `PrivateGroup`, `BackPackTour`, `SemiBackPackTour`.  |
+|            | DepartureCity       | String   | No           | Specifies the trip departure city. Accepted values are: `Beijing`, `Shanghai`, `Guangzhou`, `Shenzhen`.                               |
+
+&nbsp;
+
+- **Path**: http:&#8203;//99.79.181.180:5000/api/travelRoutes/{travelRouteID}
+- **Method**: PATCH
+- **Description**: Partially updates a single travel route with ID `travelRouteID`. This method performs a partial update: any fields not specified in the request will not be reset to their default values, only those fields specified in the request will be updated. Authentication and admin rights are required (to access admin rights, log in with the admin account). Upon successful update, the API returns a 204 No Content status code.
+- **Request Parameters**:
+
+&nbsp;
+
+|            | **Parameter Name** | **Type** | **Required** | **Description**                                                                                   |
+|------------|--------------------|----------|--------------|---------------------------------------------------------------------------------------------------|
+| **Header** | Authorization     | String   | Yes          | `bearer [JWT token]`. See the 'Authentication' section for instructions on getting the JWT token |
+| **Body**   | N/A                | Array    | Yes          | JSON Patch document describing changes to data fields                                    |
+
+&nbsp;
+
+**Example request body**:
+
+```JSON
+[
+  { "op": "replace", "path": "/title", "value": "Two day trip to New York" },
+  { "op": "replace", "path": "/originalPrice", "value": 2599 },
+  { "op": "remove", "path": "/discountPercent" },
+  { "op": "replace", "path": "/picture/url", "value": "../images/123456.png" }
+]
+```
+
+&nbsp;
+
+- **Path**: http:&#8203;//99.79.181.180:5000/api/travelRoutes/{travelRouteID}
+- **Method**: DELETE
+- **Description**: Deletes a single travel route with ID `travelRouteID`. Authentication and admin rights are required (to access admin rights, log in with the admin account). Upon successful deletion, the API returns a 204 No Content status code.
+- **Request Parameters**:
+
+&nbsp;
+
+|            | **Parameter Name** | **Type** | **Required** | **Description**                                                                                   |
+|------------|--------------------|----------|--------------|---------------------------------------------------------------------------------------------------|
+| **Header** | Authorization      | String   | Yes          | `bearer [JWT token]`. See the 'Authentication' section for instructions on getting the JWT token. |
+
+&nbsp;
+
+- **Path**: http:&#8203;//99.79.181.180:5000/api/travelRoutes/(travelRouteID1, travelRouteID2, ...)
+- **Method**: DELETE
+- **Description**: Batch deletes travel routes based on the travel route IDs enclosed within the parentheses in the path. Example call of API: `http://99.79.181.180:5000/api/travelRoutes/(1, 2, 3, 4)` (Travel routes with ID 1, 2, 3, 4 will be deleted). Authentication and admin rights are required (to access admin rights, log in with the admin account). Upon successful deletion, the API returns a 204 No Content status code.
+- **Request Parameters**:
+
+&nbsp;
+
+|            | **Parameter Name** | **Type** | **Required** | **Description**                                                                                   |
+|------------|--------------------|----------|--------------|---------------------------------------------------------------------------------------------------|
+| **Header** | Authorization      | String   | Yes          | `bearer [JWT token]`. See the 'Authentication' section for instructions on getting the JWT token. |
+
+&nbsp;
+
+#
+
+### Travel Route Picture
+- **Path**: http:&#8203;//99.79.181.180:5000/api/travelRoutes/{travelRouteID}/pictures
+- **Method**: GET
+- **Description**: Gets all the pictures of the travel route with ID `travelRouteID`
+- **Request Parameters**: None
+
+&nbsp;
+
+- **Path**: http:&#8203;//99.79.181.180:5000/api/travelRoutes/{travelRouteID}/pictures
+- **Method**: POST
+- **Description**: Adds a picture to the travel route with ID `travelRouteID`. Authentication and admin rights are required (to access admin rights, log in with the admin account).
+- **Request Parameters**: 
+
+&nbsp;
+
+|            | **Parameter Name** | **Type** | **Required** | **Description**                                                                                  |
+|------------|--------------------|----------|--------------|--------------------------------------------------------------------------------------------------|
+| **Header** | Authorization      | String   | Yes          | `bearer [JWT token]`. See the 'Authentication' section for instructions on getting the JWT token |
+| **Body**   | Url                | String   | Yes          | Url of the picture                                                                               |
+
+&nbsp;
+
+- **Path**: http:&#8203;//99.79.181.180:5000/api/travelRoutes/{travelRouteID}/pictures/{pictureID}
+- **Method**: GET
+- **Description**: Gets the picture with ID `pictureID` under the travel route with ID `travelRouteID`
+- **Request Parameters**: None
+
+&nbsp;
+
+- **Path**: http:&#8203;//99.79.181.180:5000/api/travelRoutes/{travelRouteID}/pictures/{pictureID}
+- **Method**: DELETE
+- **Description**: Deletes the picture with ID `pictureID` under the travel route with ID `travelRouteID`. Authentication and admin rights are required (to access admin rights, log in with the admin account). Upon successful deletion, the API returns a 204 No Content status code.
+- **Request Parameters**:
+
+&nbsp;
+
+|            | **Parameter Name** | **Type** | **Required** | **Description**                                                                                   |
+|------------|--------------------|----------|--------------|---------------------------------------------------------------------------------------------------|
+| **Header** | Authorization      | String   | Yes          | `bearer [JWT token]`. See the 'Authentication' section for instructions on getting the JWT token |
+
+&nbsp;
+
+#
+
+### Shopping Cart
+- **Path**: http:&#8203;//99.79.181.180:5000/api/shoppingCart
+- **Method**: GET
+- **Description**: Gets the shopping cart for the current logged in user.
+- **Request Parameters**:
+
+&nbsp;
+
+|            | **Parameter Name** | **Type** | **Required** | **Description**                                                                                   |
+|------------|--------------------|----------|--------------|---------------------------------------------------------------------------------------------------|
+| **Header** | Authorization      | String   | Yes          | `bearer [JWT token]`. See the 'Authentication' section for instructions on getting the JWT token |
+
+&nbsp;
+
+- **Path**: http:&#8203;//99.79.181.180:5000/api/shoppingCart/items
+- **Method**: POST
+- **Description**: Add a travel deal to the current logged in user's shopping cart
+- **Request Parameters**:
+
+&nbsp;
+
+|            | **Parameter Name** | **Type** | **Required** | **Description**                                                                                  |
+|------------|--------------------|----------|--------------|--------------------------------------------------------------------------------------------------|
+| **Header** | Authorization      | String   | Yes          | `bearer [JWT token]`. See the 'Authentication' section for instructions on getting the JWT token |
+| **Body**   | TravelRouteID      | String   | Yes          | ID of the travel route to be added to the shopping cart                                          |
+
+&nbsp;
+
+- **Path**: http:&#8203;//99.79.181.180:5000/api/shoppingCart/items/{itemID}
+- **Method**: DELETE
+- **Description**: Deletes the item with ID `itemID` from the current logged in user's shopping cart. Upon successful deletion, the API returns a 204 No Content status code.
+- **Request Parameters**:
+
+&nbsp;
+
+|            | **Parameter Name** | **Type** | **Required** | **Description**                                                                                   |
+|------------|--------------------|----------|--------------|---------------------------------------------------------------------------------------------------|
+| **Header** | Authorization      | String   | Yes          | `bearer [JWT token]`. See the 'Authentication' section for instructions on getting the JWT token |
+
+&nbsp;
+
+- **Path**: http:&#8203;//99.79.181.180:5000/api/shoppingCart/items/(itemID1, itemID2, ...)
+- **Method**: DELETE
+- **Description**: Batch deletes shopping cart items based on the item IDs enclosed within the parentheses in the path. Example call of API: `http://99.79.181.180:5000/api/shoppingCart/items/(1, 2, 3, 4)` (Items with ID 1, 2, 3, 4 will be deleted). Log in is required. Upon successful deletion, the API returns a 204 No Content status code.
+- **Request Parameters**:
+
+&nbsp;
+
+|            | **Parameter Name** | **Type** | **Required** | **Description**                                                                                   |
+|------------|--------------------|----------|--------------|---------------------------------------------------------------------------------------------------|
+| **Header** | Authorization      | String   | Yes          | `bearer [JWT token]`. See the 'Authentication' section for instructions on getting the JWT token |
+
+&nbsp;
+
+- **Path**: http:&#8203;//99.79.181.180:5000/api/shoppingCart/checkout
+- **Method**: POST
+- **Description**: Check out the current logged in user's shopping cart and create an order. Upon successful checkout, the API returns details of the created order in the response body.
+- **Request Parameters**:
+
+&nbsp;
+
+|            | **Parameter Name** | **Type** | **Required** | **Description**                                                                                   |
+|------------|--------------------|----------|--------------|---------------------------------------------------------------------------------------------------|
+| **Header** | Authorization      | String   | Yes          | `bearer [JWT token]`. See the 'Authentication' section for instructions on getting the JWT token |
+
+&nbsp;
+
+**Example successful response**:
+
+```JSON
+{
+  "id": "a681fb73-21a8-4ed4-b44c-6adf68c11401",
+  "userId": "699d065f-f0de-4624-a4fb-0051e2b2a407",
+  "orderItems": [
+    {
+      "id": 1,
+      "travelRouteId": "39996f34-013c-4fc6-b1b3-0c1036c47110",
+      "travelRoute": {
+        "id": "39996f34-013c-4fc6-b1b3-0c1036c47110",
+        "title": "12-Day Group Tour of Morocco: Sahara Desert + Casablanca + Marrakech + Chefchaouen (4-star)",
+        "description": "[World Encouragement] Celebrity All-Inclusive Package | No Visa Required | Maximum 25 People | Unique Desert Hotel with Stargazing + Casa Grande 5-Star Sheraton | Includes Camel Ride with Costume Show + Sahara 4x4 Adventure + YSL Garden Afternoon Tea + Performance Show | Trendy Restaurant",
+        "price": 15490.00,
+        "originalPrice": 15490.00,
+        "discountPercent": null,
+        "createTime": "0001-01-01T00:00:00",
+        "updateTime": null,
+        "departureTime": null,
+        "features": null,
+        "fees": null,
+        "notes": null,
+        "rating": 3.2,
+        "travelDays": "Three",
+        "tripType": "BackPackTour",
+        "departureCity": "Shenzhen",
+        "travelRoutePictures": []
+      },
+      "shoppingCartId": null,
+      "orderId": "a681fb73-21a8-4ed4-b44c-6adf68c11401",
+      "originalPrice": 15490.00,
+      "discountPercent": null
+    }
+  ],
+  "state": "Pending",
+  "createTime": "2024-08-25T02:29:15.8603283+00:00",
+  "transactionMetadata": null
+}
+```
+
+&nbsp;
+
+#
+
+### Order
+- **Path**: http:&#8203;//99.79.181.180:5000/api/orders
+- **Method**: GET
+- **Description**: Get all orders of the current logged in user
+- **Request Parameters**:
+
+&nbsp;
+
+|            | **Parameter Name** | **Type** | **Required** | **Description**                                                                                                                                      |
+|------------|--------------------|----------|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Header** | Authorization      | String   | Yes          | `bearer [JWT token]`. See the 'Authentication' section for instructions on getting the JWT token.                                                    |
+| **Query**  | PageNumber         | String   | No           | Specifies the page number in a paginated response. Must be a positive integer. Default value is 1.                                                   |
+|            | PageSize           | String   | No           | Specifies the number of items to be returned per page in a paginated response. Must be a positive integer. Default value is 10, maximum value is 50. |
+
+&nbsp;
+
+- **Path**: http:&#8203;//99.79.181.180:5000/api/orders/{orderID}
+- **Method**: GET
+- **Description**: Get the order with ID `orderID` of the current logged in user
+- **Request Parameters**:
+
+&nbsp;
+
+|            | **Parameter Name** | **Type** | **Required** | **Description**                                                                                   |
+|------------|--------------------|----------|--------------|---------------------------------------------------------------------------------------------------|
+| **Header** | Authorization      | String   | Yes          | `bearer [JWT token]`. See the 'Authentication' section for instructions on getting the JWT token |
+
+&nbsp;
+
+- **Path**: http:&#8203;//99.79.181.180:5000/api/orders/{orderID}/placeOrder (Not yet implemented)
+- **Method**: POST
+- **Description**: Place the order with ID `orderID` for the current logged in user
+- **Request Parameters**:
+
+&nbsp;
+
+|            | **Parameter Name** | **Type** | **Required** | **Description**                                                                                   |
+|------------|--------------------|----------|--------------|---------------------------------------------------------------------------------------------------|
+| **Header** | Authorization      | String   | Yes          | `bearer [JWT token]`. See the 'Authentication' section for instructions on getting the JWT token |
+
+&nbsp;
 

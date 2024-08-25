@@ -353,7 +353,7 @@ To get started, follow the following steps:
 
 - **Path**: https:&#8203;//potatotrip.site/api/shoppingCart/items
 - **Method**: POST
-- **Description**: Add a travel deal to the current logged in user's shopping cart
+- **Description**: Adds a travel deal to the current logged in user's shopping cart
 - **Request Parameters**:
 
 &nbsp;
@@ -393,7 +393,7 @@ To get started, follow the following steps:
 
 - **Path**: https:&#8203;//potatotrip.site/api/shoppingCart/checkout
 - **Method**: POST
-- **Description**: Check out the current logged in user's shopping cart and create an order. Upon successful checkout, the API returns details of the created order in the response body.
+- **Description**: Checks out the current logged in user's shopping cart and create an order. Upon successful checkout, the API returns details of the created order in the response body.
 - **Request Parameters**:
 
 &nbsp;
@@ -452,7 +452,7 @@ To get started, follow the following steps:
 ### Order
 - **Path**: https:&#8203;//potatotrip.site/api/orders
 - **Method**: GET
-- **Description**: Get all orders of the current logged in user
+- **Description**: Gets all orders of the current logged in user
 - **Request Parameters**:
 
 &nbsp;
@@ -467,7 +467,7 @@ To get started, follow the following steps:
 
 - **Path**: https:&#8203;//potatotrip.site/api/orders/{orderID}
 - **Method**: GET
-- **Description**: Get the order with ID `orderID` of the current logged in user
+- **Description**: Gets the order with ID `orderID` of the current logged in user
 - **Request Parameters**:
 
 &nbsp;
@@ -480,7 +480,7 @@ To get started, follow the following steps:
 
 - **Path**: https:&#8203;//potatotrip.site/api/orders/{orderID}/placeOrder (Not yet implemented)
 - **Method**: POST
-- **Description**: Place the order with ID `orderID` for the current logged in user
+- **Description**: Places the order with ID `orderID` for the current logged in user
 - **Request Parameters**:
 
 &nbsp;
